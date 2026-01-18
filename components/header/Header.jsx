@@ -1,7 +1,7 @@
 import { Text, TouchableOpacity, View } from 'react-native';
-import { styles } from './styles';
+import { styles } from '../../styles';
 import { useState } from 'react';
-
+import { Home, PlusIcon } from 'lucide-react-native';
 
 export default function Header() {
     const [showAddExpenseModal, setShowAddExpenseModal] = useState(false);

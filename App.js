@@ -1,20 +1,38 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { styles } from './styles';
+import { Home, PlusIcon } from 'lucide-react-native';
+
+
+import { useState } from 'react';
+import Header from './components/header/Header';
+
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+     const [showAddExpenseModal, setShowAddExpenseModal] = useState(false);
+    
+        const addExpensePressHandler = () => {
+            setShowAddExpenseModal(true)
+        }
+
+
+    return (
+        <View style={styles.container}>
+            <StatusBar style="auto" />
+
+            {/* Header */}
+            <Header />
+
+            {/* Overview */}
+
+            {/* Category Overview */}
+
+
+            {/* Recent Transactions */}
+
+            {/* AppBar */}
+        </View>
+    );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
