@@ -14,6 +14,7 @@ export default function AddExpense({
             animationType="slide"
         >
             <View style={styles.modal}>
+                {/* Header */}
                 <View
                     style={{
                         flexDirection: 'row',
@@ -28,6 +29,8 @@ export default function AddExpense({
 
                     <Text style={[styles.heading, { alignSelf: 'center' }]}>Add Expense</Text>
                 </View>
+
+                {/* Amount Info */}
                 <View style={[compStyles.section,]} >
                     <Text style={{fontSize:24}}>
                         Amount <Text style={compStyles.required}>*</Text>
@@ -44,12 +47,100 @@ export default function AddExpense({
                             // value={value}
                             // onChangeText={setValue}
                             keyboardType="decimal-pad"
-                            // style={styles.input}
+                            style={styles.input}
                             // onFocus={() => setFocused(true)}
                             // onBlur={() => setFocused(false)}
                         />
                     </View>
-                 </View>
+                </View>
+
+                {/* Description Info */}
+                <View style={[compStyles.section,]} >
+                    <Text style={{fontSize:24}}>
+                        Description <Text style={compStyles.required}>*</Text>
+                    </Text>
+
+                    <View
+                        style={[
+                            compStyles.inputContainer, 
+                        ]}
+                    >
+                        <TextInput
+                            // value={value}
+                            // onChangeText={setValue}
+                            placeholder="Whole Foods Marker"
+                            keyboardType="decimal-pad"
+                            style={styles.input}
+                            // onFocus={() => setFocused(true)}
+                            // onBlur={() => setFocused(false)}
+                        />
+                    </View>
+                </View>
+
+
+                {/* Category Info */}
+                <View style={[compStyles.section,]} >
+                    <Text style={{fontSize:24}}>
+                        Category <Text style={compStyles.required}>*</Text>
+                    </Text>
+
+                    <View>
+                        
+                    </View>
+                </View>     
+
+
+                {/* Date & Payment Info */}
+                <View style={{flexDirection: 'row', gap:10}}>
+
+                
+                    <View style={[compStyles.halfSection,]} >
+                        <Text style={{fontSize:24}}>
+                            Date 
+                        </Text>
+
+                        <View>
+                            
+                        </View>
+                    </View>   
+
+                    <View style={[compStyles.halfSection,]} >
+                        <Text style={{fontSize:24}}>
+                            Payment
+                        </Text>
+
+                        <View>
+                            
+                        </View>
+                    </View>    
+
+                </View>    
+
+                 {/* Notes Info */}
+                <View style={[compStyles.section,]} >
+                    <Text style={{fontSize:24}}>
+                        Notes (Optional)
+                    </Text>
+
+                    <View
+                        style={[
+                            compStyles.inputContainer, 
+                        ]}
+                    >
+                        <TextInput
+                            // value={value}
+                            // onChangeText={setValue}
+                            placeholder="Weekly grocery shopping..."
+                            keyboardType="decimal-pad"
+                            style={styles.input}
+                            // onFocus={() => setFocused(true)}
+                            // onBlur={() => setFocused(false)}
+                        />
+                    </View>
+                </View> 
+
+
+
             </View>
         </Modal>
     );
@@ -69,6 +160,24 @@ const compStyles = {
         shadowColor: '#000',
         shadowOpacity: 0.05,
         shadowRadius: 10,
+
+        marginBottom: 20
+    },
+    halfSection: {
+        backgroundColor: 'white',
+        width: '45%',
+        gap: 10,
+        alignItems: 'flex-right',
+        borderWidth: 1,
+        borderColor: '#cccc',
+
+        borderRadius: 16,
+        padding: 16,
+        shadowColor: '#000',
+        shadowOpacity: 0.05,
+        shadowRadius: 10,
+
+        marginBottom: 20
     },
     required: {
         color: 'red',
@@ -96,7 +205,7 @@ const compStyles = {
 
     input: {
         flex: 1,
-        fontSize: 28,
+        fontSize: 18,
         fontWeight: '700',
         color: '#000',
     },
