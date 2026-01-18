@@ -6,6 +6,7 @@ import { Home, PlusIcon } from 'lucide-react-native';
 
 import { useState } from 'react';
 import Header from './components/header/Header';
+import AppBar from './components/app-bar/AppBar';
 
 
 export default function App() {
@@ -21,7 +22,7 @@ export default function App() {
             <StatusBar style="auto" />
 
             {/* Header */}
-            <Header />
+            <Header modalHandler={addExpensePressHandler} />
 
             {/* Overview */}
 
@@ -31,6 +32,7 @@ export default function App() {
             {/* Recent Transactions */}
 
             {/* AppBar */}
+            <AppBar/>
         </View>
     );
 }

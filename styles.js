@@ -5,6 +5,7 @@ export const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff',
+        justifyContent: 'space-between',
       
     },
     section: {
@@ -22,4 +23,13 @@ export const styles = StyleSheet.create({
     text: {
         fontSize:18,
     },
+    endSection: {
+        width: '100%',
+        backgroundColor: 'white',
+        borderWidth: 1,
+        borderColor: '#edf2f7',
+        flexDirection: 'row',
+        justifyContent: 'space-evenly',
+        paddingVertical: 20,
+    }
 });

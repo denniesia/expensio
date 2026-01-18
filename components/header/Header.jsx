@@ -3,12 +3,9 @@ import { styles } from '../../styles';
 import { useState } from 'react';
 import { Home, PlusIcon } from 'lucide-react-native';
 
-export default function Header() {
-    const [showAddExpenseModal, setShowAddExpenseModal] = useState(false);
-
-    const addExpensePressHandler = () => {
-        setShowAddExpenseModal(true)
-    }
+export default function Header({
+    modalHandler
+}) {
 
 
     return (
@@ -18,7 +15,7 @@ export default function Header() {
                 <Text style={styles.text}>Track your expenses wisely!</Text>
             </View>
             <View>
-                <TouchableOpacity onPress={addExpensePressHandler}>
+                <TouchableOpacity onPress={modalHandler}>
                     <View style={{ backgroundColor: '#4F39F6', padding: 5, borderRadius: 10 }}>
                         <PlusIcon size={32} color={'white'} />
                     </View>
