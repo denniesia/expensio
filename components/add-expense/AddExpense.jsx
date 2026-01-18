@@ -4,6 +4,7 @@ import { styles } from "../../styles";
 import uuid from 'react-native-uuid'
 import { Dropdown } from 'react-native-element-dropdown';
 import { useState, useRef, useEffect } from "react";
+import CategoryCard from "../category-card/CategoryCard";
 
 
 export default function AddExpense({
@@ -14,6 +15,7 @@ export default function AddExpense({
     const [description, setDescription] = useState('');
     const [notes, setNotes] = useState('');
     const [date, setDate] = useState('');
+    const [category, setCategory] = useState(null);
     const [payment, setPayment] = useState(null);
     const [paymentData, setPaymentData] = useState(
         [
@@ -26,28 +28,45 @@ export default function AddExpense({
         ]
     );
 
+    const [categories, setCategories] = useState([
+        { id: 1, label: "Food & Dining", emoji: "🍽️" },
+        { id: 2, label: "Transportation", emoji: "🚗" },
+        { id: 3, label: "Bills & Utilities", emoji: "⚡" },
+        { id: 4, label: "Shopping", emoji: "🛍️" },
+        { id: 5, label: "Healthcare", emoji: "🏥" },
+        { id: 6, label: "Entertainment", emoji: "🎬" },
+
+    ]);
+
+
     useEffect(() => {
         if (paymentData.length > 0) {
             setPayment(paymentData[0].value)
         }
     }, [paymentData])
 
+    useEffect(() => {
+        if (categories.length > 0) {
+            setCategory(categories[0].label)
+        }
+    }, [categories])
+
     const addExpensePressHandler = () => {
         // const newExpense = {    
         //     id: uuid.v4(),
-            
+
         // }
     }
 
     return (
-        <Modal 
+        <Modal
             visible={visible}
             onRequestClose={onClose}
             animationType="slide"
         >
             <ScrollView>
                 <View style={styles.modal}>
-                    
+
                     {/* Header */}
                     <View
                         style={{
@@ -66,50 +85,50 @@ export default function AddExpense({
 
                     {/* Amount Info */}
                     <View style={[compStyles.section,]} >
-                        
-                        <Text style={{fontSize:24}}>
+
+                        <Text style={{ fontSize: 24 }}>
                             Amount <Text style={compStyles.required}>*</Text>
                         </Text>
 
                         <View
                             style={[
-                                compStyles.inputContainer, 
+                                compStyles.inputContainer,
                             ]}
                         >
                             <Text style={compStyles.prefix}>€</Text>
-                            
+
                             <TextInput
                                 value={amount}
                                 onChangeText={setAmount}
                                 keyboardType="number-pad"
                                 style={styles.input}
                                 autoFocus
-        
+
                             />
-                    
+
                         </View>
-                       
+
                     </View>
 
                     {/* Description Info */}
                     <View style={[compStyles.section,]} >
-                        <Text style={{fontSize:24}}>
+                        <Text style={{ fontSize: 24 }}>
                             Description <Text style={compStyles.required}>*</Text>
                         </Text>
 
                         <View
                             style={[
-                                compStyles.inputContainer, 
+                                compStyles.inputContainer,
                             ]}
                         >
-                             <TextInput
+                            <TextInput
                                 value={description}
                                 onChangeText={setDescription}
                                 placeholder="Whole Foods Marker"
                                 keyboardType="default"
                                 style={styles.input}
-                                // onFocus={() => setFocused(true)}
-                                // onBlur={() => setFocused(false)}
+                            // onFocus={() => setFocused(true)}
+                            // onBlur={() => setFocused(false)}
                             />
 
                         </View>
@@ -118,82 +137,84 @@ export default function AddExpense({
 
                     {/* Category Info */}
                     <View style={[compStyles.section,]} >
-                        <Text style={{fontSize:24}}>
+                        <Text style={{ fontSize: 24 }}>
                             Category <Text style={compStyles.required}>*</Text>
                         </Text>
 
-                        <View>
-                            
-                        </View>
-                    </View>     
+                        <CategoryCard
+                            categories={categories}
+                            value={category}
+                            onChange={setCategory}
+                        />
+                    </View>
 
 
                     {/* Date & Payment Info */}
-                    <View style={{flexDirection: 'row', gap:10}}>
+                    <View style={{ flexDirection: 'row', gap: 10 }}>
 
-                    
+
                         <View style={[compStyles.halfSection,]} >
-                            <Text style={{fontSize:24}}>
-                                Date 
+                            <Text style={{ fontSize: 24 }}>
+                                Date
                             </Text>
 
-                                <View
-                                    style={[
-                                        compStyles.inputContainer, 
-                                    ]}
-                                >
-                                    <TextInput
-                                        value={date}
-                                        onChangeText={setDate}
-                                        placeholder="YYYY-MM-DD"
-                                        keyboardType="default"
+                            <View
+                                style={[
+                                    compStyles.inputContainer,
+                                ]}
+                            >
+                                <TextInput
+                                    value={date}
+                                    onChangeText={setDate}
+                                    placeholder="YYYY-MM-DD"
+                                    keyboardType="default"
 
-                                        style={styles.input}
-                                    />
+                                    style={styles.input}
+                                />
                             </View>
-                        </View>   
+                        </View>
 
                         <View style={[compStyles.halfSection,]} >
-                            <Text style={{fontSize:24}}>
+                            <Text style={{ fontSize: 24 }}>
                                 Payment
                             </Text>
 
                             <View
                                 style={[
-                                        compStyles.inputContainer, 
-                                    ]}
+                                    compStyles.inputContainer,
+                                ]}
                             >
                                 <Pressable hitSlop={20}>
-                    
+
                                     <Dropdown
                                         placeholder="Select payment"
                                         value={payment}
-                                        onChange={item => {setPayment(item.value)}}
+                                        onChange={item => { setPayment(item.value) }}
                                         data={paymentData}
 
                                         mode="modal"
                                         labelField='label'
                                         valueField='value'
-                                        style={[styles.dropdown, { width: 250}]}  
+                                        style={[styles.dropdown, { width: 250 }]}
                                         maxHeight={100}
                                     >
 
                                     </Dropdown>
                                 </Pressable>
                             </View>
-                        </View>    
+                        </View>
 
-                    </View>    
+                    </View>
 
                     {/* Notes Info */}
                     <View style={[compStyles.section,]} >
-                        <Text style={{fontSize:24}}>
+                        <Text style={{ fontSize: 24 }}>
                             Notes (Optional)
                         </Text>
 
                         <View
                             style={[
-                                compStyles.inputContainer, 
+                                compStyles.inputContainer,
                             ]}
                         >
                             <TextInput
@@ -204,17 +225,17 @@ export default function AddExpense({
                                 style={styles.input}
                             />
                         </View>
-                    </View> 
+                    </View>
 
                     <View style={compStyles.btn}>
-                        <Button 
+                        <Button
                             color='white'
                             title="Add Expense">
                             onPress={addExpensePressHandler}
 
                         </Button>
                     </View>
-                                
+
                 </View>
             </ScrollView>
         </Modal>
@@ -287,7 +308,7 @@ const compStyles = {
         backgroundColor: '#4F39F6',
         padding: 10,
         borderRadius: 20,
-       
+
     },
     dropdown: {
         borderColor: '#ccc',
@@ -296,8 +317,8 @@ const compStyles = {
         paddingHorizontal: 10,
     },
     inputSearchStyle: {
-      height: 40,
-      fontSize: 16,
+        height: 40,
+        fontSize: 16,
     },
     dropdownList: {
         width: 200,
@@ -306,5 +327,5 @@ const compStyles = {
         borderRadius: 8,
         backgroundColor: '#fff',
         maxHeight: 200, // scrollable if too many items
-  },
+    },
 }
