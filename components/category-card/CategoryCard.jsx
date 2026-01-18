@@ -17,12 +17,12 @@ export default function CategoryCard({
     return (
         <View style={styles.container}>
             {categories.map(item => {
-                const selected = value === item.id;
+                const selected = value === item.label;
 
                 return (
                     <Pressable
                         key={item.id}
-                        onPress={() => onChange(item.id)}
+                        onPress={() => onChange(item.label)}
                         style={[
                             styles.card,
                             selected && styles.active,

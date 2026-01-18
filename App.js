@@ -19,6 +19,10 @@ export default function App() {
         setShowAddExpenseModal(true)
     }
 
+    const createExpenseHandler = (expense) => {
+        setExpenses(oldExpenses => [...oldExpenses, expense])
+    }
+
 
     return (
         <View style={styles.container}>
@@ -32,6 +36,7 @@ export default function App() {
                 <AddExpense 
                     onClose={() => setShowAddExpenseModal(false)} 
                     visible={showAddExpenseModal}
+                    onCreate={createExpenseHandler}
                 />}
 
             {/* Overview */}

@@ -1,15 +1,16 @@
-import { Button, Modal, View, Text, TouchableOpacity, TextInput, ScrollView, Pressable } from "react-native";
-import { ArrowLeft, Pi } from 'lucide-react-native'
+import { Button, Modal, View, Text, TouchableOpacity, TextInput, ScrollView, Pressable, Keyboard } from "react-native";
+import { ArrowLeft} from 'lucide-react-native'
 import { styles } from "../../styles";
 import uuid from 'react-native-uuid'
 import { Dropdown } from 'react-native-element-dropdown';
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
 import CategoryCard from "../category-card/CategoryCard";
 
 
 export default function AddExpense({
     visible,
-    onClose
+    onClose,
+    onCreate
 }) {
     const [amount, setAmount] = useState(0);
     const [description, setDescription] = useState('');
@@ -38,7 +39,6 @@ export default function AddExpense({
 
     ]);
 
-
     useEffect(() => {
         if (paymentData.length > 0) {
             setPayment(paymentData[0].value)
@@ -52,10 +52,20 @@ export default function AddExpense({
     }, [categories])
 
     const addExpensePressHandler = () => {
-        // const newExpense = {    
-        //     id: uuid.v4(),
+        const newExpense = {    
+            id: uuid.v4(),
+            amount,
+            description,
+            category,
+            payment,
+            date,
+            notes
+        };
 
-        // }
+        onCreate(newExpense);
+        onClose();
+        console.log(newExpense)
+        Keyboard.dismiss();
     }
 
     return (
@@ -230,10 +240,10 @@ export default function AddExpense({
                     <View style={compStyles.btn}>
                         <Button
                             color='white'
-                            title="Add Expense">
+                            title="Add Expense"
                             onPress={addExpensePressHandler}
 
-                        </Button>
+                        />
                     </View>
 
                 </View>
@@ -308,6 +318,7 @@ const compStyles = {
         backgroundColor: '#4F39F6',
         padding: 10,
         borderRadius: 20,
+        marginBottom: 60,
 
     },
     dropdown: {
