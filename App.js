@@ -11,9 +11,10 @@ import AddExpense from './components/add-expense/AddExpense';
 
 
 export default function App() {
-     const [showAddExpenseModal, setShowAddExpenseModal] = useState(false);
-     const [expenses, setExpenses] = useState([]);
-    
+    const [showAddExpenseModal, setShowAddExpenseModal] = useState(false);
+    const [expenses, setExpenses] = useState([]);
+
+     
     const addExpensePressHandler = () => {
         setShowAddExpenseModal(true)
     }
