@@ -4,7 +4,9 @@ import { styles } from "../../styles";
 import { Bar } from 'react-native-progress';
 
 
-export default function OverviewCard() {
+export default function OverviewCard({
+    total
+}) {
     return (
             <View style={{padding:30, backgroundColor: '#4630DE', width: '90%', alignSelf: 'center',borderRadius: 10,}}>
                 <View style={compStyles.container}>
@@ -13,7 +15,7 @@ export default function OverviewCard() {
                             Total Spent This Month
                         </Text>
                         <Text style={{fontSize: 26, fontWeight: 'bold', color:'white'}}>
-                            €2,654
+                            €{total}
                         </Text>
                     </View>
                     <View 
@@ -34,12 +36,12 @@ export default function OverviewCard() {
                             Budget: €3,500
                         </Text>
                         <Text style={{color:'white'}}>
-                            Remaining: €635
+                            Remaining: €{3500 - total}
                         </Text>
                     </View>
                     <View>
                         <Bar
-                            progress={0.4}
+                            progress={Math.min(total/3500,1)}
                             width={300}
                             height={14}
                             style={{ marginTop: 10, alignSelf:'center' }}
@@ -51,7 +53,7 @@ export default function OverviewCard() {
                     </View>
                     <View style={{marginTop: 10}}> 
                         <Text  style={{color:'white'}}>
-                            81.3% used
+                           {(total/3500*100).toFixed(2)} %
                         </Text>
                         
                     </View>

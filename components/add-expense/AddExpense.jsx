@@ -54,7 +54,7 @@ export default function AddExpense({
     const addExpensePressHandler = () => {
         const newExpense = {    
             id: uuid.v4(),
-            amount,
+            amount: Number(amount),
             description,
             category,
             payment,

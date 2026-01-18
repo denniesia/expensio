@@ -4,7 +4,7 @@ import { styles } from './styles';
 import { Home, PlusIcon } from 'lucide-react-native';
 
 
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import Header from './components/header/Header';
 import AppBar from './components/app-bar/AppBar';
 import AddExpense from './components/add-expense/AddExpense';
@@ -14,6 +14,11 @@ import OverviewCard from './components/overview-card/OverviewCard';
 export default function App() {
     const [showAddExpenseModal, setShowAddExpenseModal] = useState(false);
     const [expenses, setExpenses] = useState([]);
+
+
+    const totalSpending = useMemo(() => 
+        expenses.reduce((acc, expense) => acc + expense.amount, 0)
+    , [expenses])
 
      
     const addExpensePressHandler = () => {
@@ -41,7 +46,7 @@ export default function App() {
             }
 
             {/* Overview */}
-            <OverviewCard />
+            <OverviewCard total={totalSpending} />
 
 
             {/* Category Overview */}
