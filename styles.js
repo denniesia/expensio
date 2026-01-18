@@ -4,7 +4,7 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: '#F9FAFB',
         justifyContent: 'space-between',
       
     },
@@ -25,11 +25,17 @@ export const styles = StyleSheet.create({
     },
     endSection: {
         width: '100%',
-        backgroundColor: 'white',
         borderWidth: 1,
         borderColor: '#edf2f7',
         flexDirection: 'row',
         justifyContent: 'space-evenly',
         paddingVertical: 20,
-    }
+    },
+    modal: {
+        paddingTop: 70,
+
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    
 });

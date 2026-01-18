@@ -7,6 +7,7 @@ import { Home, PlusIcon } from 'lucide-react-native';
 import { useState } from 'react';
 import Header from './components/header/Header';
 import AppBar from './components/app-bar/AppBar';
+import AddExpense from './components/add-expense/AddExpense';
 
 
 export default function App() {
@@ -23,6 +24,13 @@ export default function App() {
 
             {/* Header */}
             <Header modalHandler={addExpensePressHandler} />
+            {
+                showAddExpenseModal 
+                    && 
+                <AddExpense 
+                    onClose={() => setShowAddExpenseModal(false)} 
+                    visible={showAddExpenseModal}
+                />}
 
             {/* Overview */}
 
