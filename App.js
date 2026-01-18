@@ -8,6 +8,7 @@ import { useState } from 'react';
 import Header from './components/header/Header';
 import AppBar from './components/app-bar/AppBar';
 import AddExpense from './components/add-expense/AddExpense';
+import OverviewCard from './components/overview-card/OverviewCard';
 
 
 export default function App() {
@@ -23,7 +24,6 @@ export default function App() {
         setExpenses(oldExpenses => [...oldExpenses, expense])
     }
 
-
     return (
         <View style={styles.container}>
             <StatusBar style="auto" />
@@ -37,9 +37,12 @@ export default function App() {
                     onClose={() => setShowAddExpenseModal(false)} 
                     visible={showAddExpenseModal}
                     onCreate={createExpenseHandler}
-                />}
+                />
+            }
 
             {/* Overview */}
+            <OverviewCard />
+
 
             {/* Category Overview */}
 
