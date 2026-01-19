@@ -1,6 +1,4 @@
-###Expensio
-
- # Personal Finance Tracker
+# Personal Finance Tracker
 
 A simple and clean mobile app for tracking daily expenses.
 
