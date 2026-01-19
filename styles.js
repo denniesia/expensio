@@ -8,7 +8,8 @@ export const styles = StyleSheet.create({
     },
     section: {
         flexDirection: 'row',
-        padding:30,
+        paddingTop: 10,
+        paddingHorizontal: 30,
         justifyContent: 'space-between',
         alignItems: 'center',
     },
