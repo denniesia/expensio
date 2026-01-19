@@ -13,6 +13,12 @@ export const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
     },
+    wrapper: {
+        backgroundColor: '#ffff', 
+        width: '90%', 
+        alignSelf: 'center', 
+        borderRadius: 10 
+    },
     heading: {
         fontSize:28,
         fontWeight: 'bold',

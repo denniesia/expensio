@@ -2,6 +2,7 @@ import { Text, View, StyleSheet } from "react-native";
 import { PieChart } from "react-native-gifted-charts";
 import { useMemo, } from "react";
 import CategoryOverviewCard from "../category-overview-card/CategoryOverviewCard";
+import { styles } from "../../styles";
 
 export default function CategoryOverview({
     expenses,
@@ -37,8 +38,6 @@ export default function CategoryOverview({
         () => otherExpenses.reduce((acc, expense) => acc + expense.amount, 0),
         [expenses],
     );
-    console.log(total)
-    console.log(totalBillsExpenses)
 
     const pieData = [
         {
@@ -75,54 +74,31 @@ export default function CategoryOverview({
 
     ];
 
-return (
-    <View style={{ backgroundColor: '#ffff', width: '90%', alignSelf: 'center', borderRadius: 10 }}>
-        <View style={{paddingHorizontal: 30, paddingTop: 20}}>
-            <Text style={{ fontSize: 20 }}>Spending by Category</Text>
-        </View>
-        <View style={{ flexDirection: 'row', gap: 10, alignItems:'center', padding: 5, justifyContent: 'center'}}>
-            <View>
-                <PieChart
-                    donut
-                    radius={80}
-                    textSize={20}
-                    textBackgroundRadius={26}
-                    data={pieData}
-                />
+    return (
+        <View style={styles.wrapper}>
+            <View style={{paddingHorizontal: 30, paddingTop: 20}}>
+                <Text style={{ fontSize: 20 }}>Spending by Category</Text>
             </View>
-            <View
-                style={{
+            <View style={{ flexDirection: 'row', gap: 10, alignItems:'center', padding: 5, justifyContent: 'center'}}>
+                <View>
+                    <PieChart
+                        donut
+                        radius={80}
+                        textSize={20}
+                        textBackgroundRadius={26}
+                        data={pieData}
+                    />
+                </View>
+                <View
+                    style={{
+                        flexDirection: 'column',
+                        justifyContent: 'space-evenly',
+                        marginTop: 20,
+                    }}>
+                        <CategoryOverviewCard data={pieData}/>
 
-                    flexDirection: 'column',
-                    justifyContent: 'space-evenly',
-                    marginTop: 20,
-                }}>
-                    <CategoryOverviewCard data={pieData}/>
-
+                </View>
             </View>
         </View>
-    </View>
-);
+    );
 };
-
-
-const styles = StyleSheet.create({
-    container: {
-        flexDirection: "row",
-        alignItems: "center"
-    },
-    legend: {
-        marginLeft: 20
-    },
-    legendItem: {
-        flexDirection: "row",
-        alignItems: "center",
-        marginBottom: 8
-    },
-    dot: {
-        width: 10,
-        height: 10,
-        borderRadius: 5,
-        marginRight: 8
-    }
-});

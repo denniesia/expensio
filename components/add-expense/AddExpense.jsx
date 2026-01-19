@@ -60,14 +60,13 @@ export default function AddExpense({
             payment,
             date,
             notes,
-            createdAt: new Date(),
+            createdAt: new Date().toLocaleString(),
         };
 
         onCreate(newExpense);
         onClose();
-        console.log(newExpense)
+
         Keyboard.dismiss();
-        console.log(newExpense)
     }
 
     return (
@@ -139,8 +138,6 @@ export default function AddExpense({
                                 placeholder="Whole Foods Marker"
                                 keyboardType="default"
                                 style={styles.input}
-                            // onFocus={() => setFocused(true)}
-                            // onBlur={() => setFocused(false)}
                             />
 
                         </View>
