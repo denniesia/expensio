@@ -4,7 +4,6 @@ import {
 	View,
 } from "react-native";
 import { styles } from "./styles";
-import { Eclipse, Home, PlusIcon } from "lucide-react-native";
 
 import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context";
 import { useMemo, useState, useEffect } from "react";
@@ -12,10 +11,9 @@ import Header from "./components/header/Header";
 import AppBar from "./components/app-bar/AppBar";
 import AddExpense from "./components/add-expense/AddExpense";
 import OverviewCard from "./components/overview-card/OverviewCard";
-import CategoryCard from "./components/category-card/CategoryCard";
 import CategoryOverview from "./components/category-overview/CategoryOverview";
 import RecentTransactionsOverview from "./components/recent-transactions-overview/RecentTransactionsOverview";
-import { before } from "lodash";
+
 
 export default function App() {
 	const [showAddExpenseModal, setShowAddExpenseModal] = useState(false);

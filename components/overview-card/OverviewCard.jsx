@@ -1,6 +1,5 @@
 import { Text, View } from "react-native";
 import { Euro } from 'lucide-react-native'
-import { styles } from "../../styles";
 import { Bar } from 'react-native-progress';
 
 
