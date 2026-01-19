@@ -15,6 +15,7 @@ import OverviewCard from "./components/overview-card/OverviewCard";
 import CategoryCard from "./components/category-card/CategoryCard";
 import CategoryOverview from "./components/category-overview/CategoryOverview";
 import RecentTransactionsOverview from "./components/recent-transactions-overview/RecentTransactionsOverview";
+import { before } from "lodash";
 
 export default function App() {
 	const [showAddExpenseModal, setShowAddExpenseModal] = useState(false);
@@ -37,7 +38,7 @@ export default function App() {
 
 	useEffect(() => {
            if (expenses.length > 0) {
-			const recentTransactions = Object.values(expenses).sort((a,b) => b.createdAt - a.createdAt).slice(0,5)
+			const recentTransactions = Object.values(expenses).sort((a,b) => a.createdAt - b.createdAt).slice(0,5)
 			setRecentExpenses(recentTransactions)
 		   }
     }, [expenses])

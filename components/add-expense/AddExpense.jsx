@@ -51,6 +51,11 @@ export default function AddExpense({
         }
     }, [categories])
 
+    const handleAmountHandler = (text) => {
+        const normalized = text.replace(',', '.');
+        setAmount(normalized)
+    }
+
     const addExpensePressHandler = () => {
         const newExpense = {    
             id: uuid.v4(),
@@ -110,11 +115,11 @@ export default function AddExpense({
 
                             <TextInput
                                 value={amount}
-                                onChangeText={setAmount}
-                                keyboardType="number-pad"
+                                onChangeText={handleAmountHandler}
+                                keyboardType="numeric"
+                                inputMode="decimal"
                                 style={styles.input}
                                 autoFocus
-
                             />
 
                         </View>
