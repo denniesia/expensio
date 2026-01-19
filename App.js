@@ -55,7 +55,7 @@ export default function App() {
             {/* Recent Transactions */}
 
             {/* AppBar */}
-            <AppBar/>
+            <AppBar modalHandler={addExpensePressHandler}/>
         </View>
     );
 }

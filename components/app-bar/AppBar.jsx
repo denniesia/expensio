@@ -3,7 +3,9 @@ import { TouchableOpacity, View, Text } from 'react-native';
 import { styles } from '../../styles';
 
 
-export default function AppBar() {
+export default function AppBar({
+    modalHandler
+}) {
  return (
         <View style={styles.endSection}>
             <View style={{marginBottom:10, alignItems: 'center'}}>
@@ -14,7 +16,7 @@ export default function AppBar() {
             </View>
             
             <View style={{marginBottom:10, alignItems: 'center'}}>
-                <TouchableOpacity style={{marginBottom:5}}>
+                <TouchableOpacity style={{marginBottom:5}} onPress={modalHandler}>
                     <PlusIcon size={32}/>
                 </TouchableOpacity>
                 <Text>Add</Text>
