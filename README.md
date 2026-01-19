@@ -4,7 +4,37 @@ A simple and clean mobile app for tracking daily expenses.
 
 The app helps users see where their money goes by showing expenses grouped into categories and a list of recent transactions — all in an easy-to-use dashboard.
 
+## 📸 App Preview
+<p align="center">
+  <img
+    src="https://github.com/denniesia/expensio/blob/main/assets/appImages/expensio_img.jpeg"
+    alt="Expensio app dashboard preview"
+    width="300"
+  />
+  <img
+    src="https://github.com/denniesia/expensio/blob/main/assets/appImages/expensio_img2.jpeg"
+    alt="Expensio app dashboard preview"
+    width="300"
+  />
+</p>
+<p align="center">
+   <img
+    src="https://github.com/denniesia/expensio/blob/main/assets/appImages/expensio_img3.jpeg"
+    alt="Expensio app dashboard preview"
+    width="300"
+  />
+    <img
+    src="https://github.com/denniesia/expensio/blob/main/assets/appImages/expensio_img4.jpeg"
+    alt="Expensio app dashboard preview"
+    width="300"
+  />
+</p>
+
+
 ## ✨ Features
+
+- 💵 **Adding New Expense**  
+  Intuitive, easy-to-use modal for adding new expense and its details at a glance.
 
 - 📊 **Spending by Category**  
   View monthly expenses in a donut chart with clear amounts and percentages.
@@ -20,7 +50,7 @@ The app helps users see where their money goes by showing expenses grouped into 
 
 ## 🛠️ Tech Stack
 
-- **Framework:** React Native
+- **Framework:** - `React Native`
 - **UI & Layout:**  
   - `react-native-safe-area-context`  
   - `lucide-react-native`
