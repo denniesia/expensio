@@ -37,6 +37,8 @@ export default function CategoryOverview({
         () => otherExpenses.reduce((acc, expense) => acc + expense.amount, 0),
         [expenses],
     );
+    console.log(total)
+    console.log(totalBillsExpenses)
 
     const pieData = [
         {

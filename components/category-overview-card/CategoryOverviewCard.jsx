@@ -17,7 +17,7 @@ export default function CategoryOverviewCard({ data }) {
                     <View style={styles.right}>
                         <Text style={styles.amount}>${item.value}</Text>
                         <Text style={styles.percent}>
-                            {item.percent}%
+                            {isNaN(item.percent) ? '0%' : `${item.percent}%`}
                         </Text>
                     </View>
                 </View>
