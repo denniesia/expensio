@@ -67,6 +67,7 @@ export default function AddExpense({
         onClose();
         console.log(newExpense)
         Keyboard.dismiss();
+        console.log(newExpense)
     }
 
     return (

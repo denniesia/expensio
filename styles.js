@@ -29,7 +29,6 @@ export const styles = StyleSheet.create({
     },
     modal: {
         paddingTop: 70,
-
         justifyContent: 'center',
         alignItems: 'center'
     },

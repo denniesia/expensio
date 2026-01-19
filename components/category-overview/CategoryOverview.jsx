@@ -1,62 +1,126 @@
 import { Text, View, StyleSheet } from "react-native";
 import { PieChart } from "react-native-gifted-charts";
-
+import { useMemo, } from "react";
+import CategoryOverviewCard from "../category-overview-card/CategoryOverviewCard";
 
 export default function CategoryOverview({
-    expenses
+    expenses,
+    total
 }) {
+
+    const foodExpenses = expenses.filter(item => item.category === 'Food & Dining');
+    const totalFoodExpenses = useMemo(
+        () => foodExpenses.reduce((acc, expense) => acc + expense.amount, 0),
+        [expenses],
+    );
+
+    const transportExpenses = expenses.filter(item => item.category === 'Transportation');
+    const totalTransportExpenses = useMemo(
+        () => transportExpenses.reduce((acc, expense) => acc + expense.amount, 0),
+        [expenses],
+    );
+
+    const billsExpenses = expenses.filter(item => item.category === 'Bill & Utilities');
+    const totalBillsExpenses = useMemo(
+        () => billsExpenses.reduce((acc, expense) => acc + expense.amount, 0),
+        [expenses],
+    );
+
+    const shoppingExpenses = expenses.filter(item => item.category === 'Shopping');
+    const totalShoppingExpenses = useMemo(
+        () => shoppingExpenses.reduce((acc, expense) => acc + expense.amount, 0),
+        [expenses],
+    );
+
+    const otherExpenses = expenses.filter(item => item.category === 'Healthcare' || item.category === 'Entertainment');
+    const totalOtherExpenses = useMemo(
+        () => otherExpenses.reduce((acc, expense) => acc + expense.amount, 0),
+        [expenses],
+    );
+
     const pieData = [
-        { title: "Food", value: 1150, color: "#FF4D4F" },
-        { title: "Transport", value: 680, color: "#3B82F6"},
-        { title: "Bills", value: 520, color:"#22C55E"},
-        { title: "Shopping", value: 350, color:  "#FACC15"},
-        { title: "Others", value: 147, color: "#9CA3AF"}
+        {
+            title: "Food & Dining",
+            value: totalFoodExpenses,
+            color: "#FF4D4F",
+            percent: (totalFoodExpenses / total * 100).toFixed(2) 
+        },
+        {
+            title: "Transport",
+            value: totalTransportExpenses,
+            color: "#3B82F6",
+            percent: (totalTransportExpenses / total * 100).toFixed(2) 
+
+        },
+        {
+            title: "Bills",
+            value: totalBillsExpenses,
+            color: "#22C55E",
+            percent: (totalBillsExpenses / total * 100).toFixed(2)
+        },
+        {
+            title: "Shopping",
+            value: totalShoppingExpenses,
+            color: "#FACC15",
+            percent: (totalShoppingExpenses / total * 100).toFixed(2)
+        },
+        {
+            title: "Others",
+            value: totalOtherExpenses,
+            color: "#9CA3AF",
+            percent: (totalOtherExpenses / total * 100).toFixed(2) || 0
+        }
+
     ];
 
-
-
-    return (
-        <View style={{padding:30, backgroundColor: '#ffff', width: '90%', alignSelf: 'center',borderRadius: 10, gap:20}}> 
+return (
+    <View style={{ backgroundColor: '#ffff', width: '90%', alignSelf: 'center', borderRadius: 10 }}>
+        <View style={{paddingHorizontal: 30, paddingTop: 20}}>
+            <Text style={{ fontSize: 20 }}>Spending by Category</Text>
+        </View>
+        <View style={{ flexDirection: 'row', gap: 10, alignItems:'center', padding: 5, justifyContent: 'center'}}>
             <View>
-                <Text style={{fontSize: 20}}>Spending by Category</Text>
-            </View>
-            <View>
-                <View>
-                   <PieChart
+                <PieChart
                     donut
-                    
-                    radius={100}
+                    radius={80}
                     textSize={20}
-                    showTextBackground
                     textBackgroundRadius={26}
                     data={pieData}
                 />
+            </View>
+            <View
+                style={{
 
+                    flexDirection: 'column',
+                    justifyContent: 'space-evenly',
+                    marginTop: 20,
+                }}>
+                    <CategoryOverviewCard data={pieData}/>
 
-                </View>
             </View>
         </View>
-    );
+    </View>
+);
 };
 
 
 const styles = StyleSheet.create({
-  container: {
-    flexDirection: "row",
-    alignItems: "center"
-  },
-  legend: {
-    marginLeft: 20
-  },
-  legendItem: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginBottom: 8
-  },
-  dot: {
-    width: 10,
-    height: 10,
-    borderRadius: 5,
-    marginRight: 8
-  }
+    container: {
+        flexDirection: "row",
+        alignItems: "center"
+    },
+    legend: {
+        marginLeft: 20
+    },
+    legendItem: {
+        flexDirection: "row",
+        alignItems: "center",
+        marginBottom: 8
+    },
+    dot: {
+        width: 10,
+        height: 10,
+        borderRadius: 5,
+        marginRight: 8
+    }
 });

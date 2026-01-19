@@ -58,7 +58,7 @@ export default function App() {
 							<OverviewCard total={totalSpending} />
 
 							{/* Category Overview */}
-							<CategoryOverview expenses={expenses} />
+							<CategoryOverview expenses={expenses} total={totalSpending}/>
 
 							{/* Recent Transactions */}
 						</View>
