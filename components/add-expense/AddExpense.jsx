@@ -59,7 +59,8 @@ export default function AddExpense({
             category,
             payment,
             date,
-            notes
+            notes,
+            createdAt: new Date(),
         };
 
         onCreate(newExpense);

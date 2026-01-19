@@ -4,12 +4,9 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#F9FAFB',
-        justifyContent: 'space-between',
-      
+        backgroundColor: '#e7eaec',
     },
     section: {
-        paddingTop: 70,
         flexDirection: 'row',
         padding:30,
         justifyContent: 'space-between',
@@ -28,8 +25,7 @@ export const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#edf2f7',
         flexDirection: 'row',
-        justifyContent: 'space-evenly',
-        paddingVertical: 20,
+        // justifyContent: 'space-evenly',
     },
     modal: {
         paddingTop: 70,

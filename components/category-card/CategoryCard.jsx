@@ -16,7 +16,7 @@ export default function CategoryCard({
 
     return (
         <View style={styles.container}>
-            {categories.map(item => {
+            {categories?.map(item => {
                 const selected = value === item.label;
 
                 return (
